@@ -2,15 +2,20 @@ import { API } from "./Interceptors/Interceptors"
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ICard } from "../components/MainPage/PayCards/PayCards"
 import { api } from './Interceptors/Interceptors'
+import { Getting } from '../feature/BankSlice'
 import axios from "axios"
 
  export const Get = createAsyncThunk(
   'cards/Get',
-  async () => { 
+    () => {
+      const arr = JSON.parse(localStorage.getItem("arr")) || []
+     return arr
+
+  /*async () => { 
     const result = await api.get<ICard[]>('/cards/', { })
     console.log('get', result);
     
-      return result.data
+      return result.data*/
     
      /*return API(localStorage.getItem("jwtToken")).get<ICard[]>('/cards/', { })
      .then((res) => {

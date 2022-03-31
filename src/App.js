@@ -5,6 +5,7 @@ import MainPageHeader from './components/MainPage/MainPageHeader/MainPageHeader'
 import CreateCard from './components/MainPage/CreateCard/FormCreateCard'
 import PayCards from './components/MainPage/PayCards/PayCards'
 import { Toaster } from 'react-hot-toast';
+import MainPage from './components/MainPage/MainPage'
 
 function App() {
 

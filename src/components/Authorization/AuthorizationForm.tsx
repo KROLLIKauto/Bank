@@ -30,25 +30,25 @@ let token = localStorage.getItem("jwtToken") || null
     height: 38px;
     border-radius: 8px;
     border: 1px solid black;
+    color: black;
   `
 
 const AuthorizationForm: FC = () => {
   const navigate = useNavigate()
 
-  const Add = async (login:string, password:string) => {
+  /*const Add = async (login:string, password:string) => {
     await api.post('http://localhost/auth/jwt/create/', {
         username: login,
         password,
       })
       .then((res) => {
-        console.log(res);
         localStorage.setItem('jwtToken', res.data.access);
         localStorage.setItem('jwtRefresh', res.data.refresh);
       })
     const id = await api.post('http://localhost/accounts/').then(res => res.data.id);
     localStorage.setItem('uuid', id);
     navigate('/MainPage')
-  }
+  }*/
 
   const changeSubmit = (e) => {
     e.preventDefault();
@@ -56,8 +56,13 @@ const AuthorizationForm: FC = () => {
     const formData = new FormData(e.target)
 		const password = formData.get("Password") as string
     const login = formData.get("login") as string
-
-    Add(login, password)  
+    console.log(login);
+    
+    if(login==='admin' && password==='admin'){
+      localStorage.setItem('jwtToken', 'token123');
+      navigate('/MainPage')
+    }
+    //Add(login, password)  
   };
   
   return (

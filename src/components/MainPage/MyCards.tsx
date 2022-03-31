@@ -5,6 +5,7 @@ import TestCard from './TestCard/TestCard'
 import styled from 'styled-components'
 import { ICard } from './PayCards/PayCards'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
+import { Getting } from '../../feature/BankSlice'
  
 const Form = styled.div`
   display: flex;
@@ -58,10 +59,14 @@ const DeleteButton = styled.div(()=>{
 const MyCards: FC = () => {
   const cardsArray:ICard[] = useAppSelector(state => state.bankSlice.cards)
   const dispatch = useAppDispatch()
+
+  console.log(cardsArray);
+  
   
   useEffect(() => {
-    dispatch(Get())
+    dispatch(Getting())
   }, [dispatch])
+  
   
   return (<> 
     <Form >

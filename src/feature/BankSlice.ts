@@ -33,6 +33,12 @@ export const bankSlice = createSlice({
       state.cards = state.cards.filter(card=>card.id !== action.payload)
     },
 
+    Getting(state) {
+      console.log(state.cards);
+      
+      state.cards = JSON.parse(localStorage.getItem("arr")) || []
+    },
+
     TransferCards(state, action: IAction<object>){
       Transfer(state, action)
     },
@@ -41,13 +47,15 @@ export const bankSlice = createSlice({
       state.cards = []
     }
   },
-  extraReducers: (builder) => {
+  /*extraReducers: (builder) => {
     builder
       .addCase(Get.pending, (state) => {
         state.status = 'loading'
         state.error = null 
       })
       .addCase(Get.fulfilled, (state, action)=>{
+        console.log(action);
+        
         state.status = 'resolved'
         state.cards = action.payload
       })
@@ -55,7 +63,7 @@ export const bankSlice = createSlice({
         state.status = 'rejected'
         state.error = action.error.message
       })
-    /*[DeleteCards.pending] : (state) => {
+    [DeleteCards.pending] : (state) => {
       console.log('p',state)
       state.status = 'loading'
       state.error = null
@@ -69,10 +77,10 @@ export const bankSlice = createSlice({
       state.status = 'rejected'
       state.error = action.payload
       console.log(action.payload);
-    }*/
-  }
+    }
+  }*/
 });
 
-export const { CreateCard, Delete, TransferCards, Exit } = bankSlice.actions
+export const { CreateCard, Delete, TransferCards, Exit, Getting } = bankSlice.actions
 
 export default bankSlice.reducer

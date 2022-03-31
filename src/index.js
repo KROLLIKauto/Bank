@@ -14,7 +14,7 @@ const store = setupStore();
 
 const All = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   ${sberBox[":root"]}
   ${darkSber[":root"]}
   border-radius: 7px;
